@@ -36,6 +36,7 @@ public class PlayerShipController : MonoBehaviour
             Rigidbody _bullet;
             _bullet = Instantiate(playerBullet, bulletSpawnPoint.position, bulletSpawnPoint.rotation) as Rigidbody;
             _bullet.AddForce(Vector2.up * 30, ForceMode.Impulse);
+            //SoundManager.Instance.PlaySound2D("PlayerFire");
             StartCoroutine(ResetShoot());
         }
     }
