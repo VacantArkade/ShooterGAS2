@@ -4,7 +4,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public float spawnTime = 2.0f;
-    public float ySpawnPos = 18;
+    public float xSpawnPos = 6;
     public GameObject enemyShip;
 
     public bool isGamePlaying;
@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
         while (isGamePlaying)
         {
             yield return new WaitForSeconds(spawnTime);
-            Instantiate(enemyShip, new Vector3(Random.Range(-3, 3), ySpawnPos, 0), Quaternion.identity);
+            Instantiate(enemyShip, new Vector3(xSpawnPos, Random.Range(-1, 13), 0), Quaternion.identity);
         }
     }
 }

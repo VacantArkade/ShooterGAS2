@@ -7,6 +7,7 @@ public class PlayerShipController : MonoBehaviour
 
     //Control ship move distance
     public float xMin, xMax;
+    public float yMin, yMax;
 
     //Bullet Variables
     public Rigidbody playerBullet;
@@ -25,17 +26,19 @@ public class PlayerShipController : MonoBehaviour
     void Update()
     {
         float xMove = Input.GetAxisRaw("Horizontal");
+        float yMove = Input.GetAxisRaw("Vertical");
 
-        transform.Translate(xMove * moveSpeed * Time.deltaTime, 0, 0);
+        transform.Translate(xMove * moveSpeed * Time.deltaTime, yMove * moveSpeed * Time.deltaTime, 0);
+
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, xMin, xMax),
-            transform.position.y, transform.position.z);
+            Mathf.Clamp(transform.position.y, yMin, yMax), transform.position.z);
 
         if (Input.GetButton("Fire1") && canShoot)
         {
             canShoot = false;
             Rigidbody _bullet;
             _bullet = Instantiate(playerBullet, bulletSpawnPoint.position, bulletSpawnPoint.rotation) as Rigidbody;
-            _bullet.AddForce(Vector2.up * 30, ForceMode.Impulse);
+            _bullet.AddForce(Vector2.right * 30, ForceMode.Impulse);
             //SoundManager.Instance.PlaySound2D("PlayerFire");
             StartCoroutine(ResetShoot());
         }

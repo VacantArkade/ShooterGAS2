@@ -18,12 +18,12 @@ public class EnemyShipController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(0, shipDropSpeed * Time.deltaTime, 0);
-        transform.Rotate(0, 60f * Time.deltaTime, 0);
-        transform.position = new Vector3(XSine(), transform.position.y, transform.position.z);
+        transform.Translate(shipDropSpeed * Time.deltaTime, 0, 0);
+        transform.Rotate(60f * Time.deltaTime, 0, 0);
+        transform.position = new Vector3(transform.position.x, YSine(), transform.position.z);
     }
 
-    public float XSine()
+    public float YSine()
     {
         return Mathf.Sin(Time.time * _frequency * _distance);
     }
