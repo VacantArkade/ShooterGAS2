@@ -5,7 +5,6 @@ public class GameManager : MonoBehaviour
 {
     public float spawnTime = 2.0f;
     public float xSpawnPos = 18;
-    private float ySpawnPos;
     public GameObject enemyShip;
 
     public bool isGamePlaying;
@@ -17,7 +16,7 @@ public class GameManager : MonoBehaviour
         isGamePlaying = true;
         InvokeRepeating("SpawnShip", 2f, 2f);
     }
-    
+
     void StartGame()
     {
         isGamePlaying = true;
@@ -29,8 +28,8 @@ public class GameManager : MonoBehaviour
         if (isGamePlaying)
         {
             //yield return new WaitForSeconds(spawnTime);
-            //ySpawnPos = UnityEngine.Random.Range(-1.0f, 13.0f);
-            Vector3 spawnPos = new Vector3(xSpawnPos, Random.Range(-1f, 13f), 0);
+            float ySpawnPos = Random.Range(-1.0f, 13.0f);
+            Vector3 spawnPos = new Vector3(xSpawnPos, ySpawnPos, 0);
             Instantiate(enemyShip, spawnPos, Quaternion.identity);
             //new Vector3(xSpawnPos, UnityEngine.Random.Range(-1.0f, 13.0f), 0)
         }

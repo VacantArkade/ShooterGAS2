@@ -24,7 +24,7 @@ public class EnemyShipController : MonoBehaviour
     {
         transform.Translate(shipDropSpeed * Time.deltaTime, 0, 0);
         transform.Rotate(60f * Time.deltaTime, 0, 0);
-        transform.position = new Vector3(transform.position.x, YSine(), transform.position.z);
+        //transform.position = new Vector3(transform.position.x, YSine(), transform.position.z);
         shootSpeed += Time.deltaTime;
         if (shootSpeed >= 3)
         {
@@ -34,6 +34,14 @@ public class EnemyShipController : MonoBehaviour
             shootSpeed = 0;
         }
 
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponent<PlayerShipController>() != null)
+        {
+            Destroy(other.gameObject);
+        }
     }
 
     public float YSine()
