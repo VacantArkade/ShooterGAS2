@@ -443,7 +443,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnTime: 2
-  ySpawnPos: 6
+  xSpawnPos: 16
   enemyShip: {fileID: 3847488096200104081, guid: c7fd374694113a44f8fccd03087e41ca, type: 3}
   isGamePlaying: 0
 --- !u!4 &492902018

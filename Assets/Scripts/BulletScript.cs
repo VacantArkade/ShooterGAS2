@@ -11,7 +11,7 @@ public class BulletScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Enemy")
+        if(other.gameObject.tag == "Enemy" && !enemyBullet)
         {
             other.GetComponent<EnemyShipController>().enemyHealth--;
             if (other.gameObject.GetComponent<EnemyShipController>().enemyHealth <= 0)
@@ -19,6 +19,12 @@ public class BulletScript : MonoBehaviour
                 Destroy(other.gameObject);
             }
 
+            Destroy(gameObject);
+        }
+
+        if (other.gameObject.tag == "Player")
+        {
+            Destroy(other.gameObject);
             Destroy(gameObject);
         }
     }
